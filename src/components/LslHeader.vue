@@ -1,15 +1,17 @@
 <template>
   <header>
-    <div class="logo">
-      <router-link to="/">
-        <img src="../assets/img/logo.png">
-      </router-link>
-    </div>
-    <nav class="fr">
-      <router-link v-for="(item,i) in navList" :key="i" class="alignCenter" :class="url== i ? 'active' : ''" :to="item.url">
-        {{ item.name }}
+    <div class="container">
+      <div class="logo">
+        <router-link to="/">
+          <img src="../assets/img/logo.png">
         </router-link>
-    </nav>
+      </div>
+      <nav class="fr">
+        <router-link v-for="(item,i) in navList" :key="i" class="alignCenter" :class="url== i ? 'active' : ''" :to="item.url">
+          {{ item.name }}
+          </router-link>
+      </nav>
+    </div>
   </header>
 </template>
 
@@ -29,7 +31,7 @@ export default {
         name: '首页',
         url: '/'
       }, {
-        name: '关于鹤年堂',
+        name: '品牌故事',
         url: '/company'
       }, {
         name: '产品中心',
@@ -53,15 +55,23 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="scss" scoped>
   header {
-    width: 1099px;
-    height: 100px;
-    overflow: hidden;
-    margin: 0 auto;
+    position: fixed;
+    z-index: 99;
+    width: 100%;
+    top: 0;
+    background: #fff;
+    
+    .container {
+      width: 1099px;
+      height: 100px;
+      overflow: hidden;
+      margin: 0 auto;
+    }
   }
   @media screen and (max-width: 1098px) {
-    header {
+    header .container {
       width: 979px;
     }
   }

@@ -18,7 +18,7 @@ const routes = [
     name: 'company',
     component: () => import('../views/Company.vue'),
     meta: {
-      title: '关于我们 - 鹤年堂'
+      title: '品牌故事 - 鹤年堂'
     }
   },
   {

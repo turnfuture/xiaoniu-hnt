@@ -10,7 +10,7 @@
         @bind-current="parentListen"
         >
         <h2>About us</h2>
-        <p>关于鹤年堂</p>
+        <p>品牌故事</p>
       </lsl-aside>
 
       <div :class="$style.main">

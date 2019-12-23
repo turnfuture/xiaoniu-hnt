@@ -11,8 +11,8 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 // 引入vue-amap
 import AMap from 'vue-amap'
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
 
 Vue.prototype.$dataGet = dataGet
 Vue.prototype.$dataPost = dataPost

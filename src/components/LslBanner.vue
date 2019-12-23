@@ -5,6 +5,8 @@
         <swiper-slide v-for="item in imgs" :key="item.id">
           <img :src="item.url" alt="banner">
         </swiper-slide>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
         <div class="swiper-pagination" slot="pagination"></div>
       </swiper>
     </template>
@@ -33,10 +35,15 @@ export default {
         notNextTick: true,
         loop: true,
         initialSlide: 0,
+        effect: 'fade',
         autoplay: {
           delay: 5000,
           stopOnLastSlide: false,
           disableOnInteraction: false
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
         },
         pagination: {
           el: '.swiper-pagination',
@@ -49,9 +56,22 @@ export default {
 }
 </script>
 
+<style>
+.swiper-container{
+  --swiper-theme-color: #ff6600;/* 设置Swiper风格 */
+  --swiper-navigation-color: #00ff33;/* 单独设置按钮颜色 */
+  --swiper-navigation-size: 30px;/* 设置按钮大小 */
+}
+.swiper-button-prev, .swiper-button-next {
+  height: 44px !important;
+}
+</style>
+
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
   .banner {
+    margin-top: 100px;
+      
     div {
       height: 500px;
     }

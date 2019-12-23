@@ -8,7 +8,7 @@
               <h5><router-link to="/">首页</router-link></h5>
             </li>
             <li>
-              <h5><router-link to="/company">关于鹤年堂</router-link></h5>
+              <h5><router-link to="/company">品牌故事</router-link></h5>
             </li>
             <li>
               <h5><router-link to="/product">产品中心</router-link></h5>
