@@ -9,8 +9,8 @@
         <div class="content">
           <!-- 关于我们 -->
           <div :class="$style.about">
-            <img src="../assets/img/index-01.png" alt="首页图片">
             <div class="container" :class="$style.con">
+              <img src="../assets/img/index-about.jpg" alt="首页图片">
               <lsl-aside
                 :class="$style['lsl-aside']"
                 :aside-list="asides"
@@ -31,6 +31,14 @@
             <div class="container" :class="$style.title" :style="{top: productTop + 'px'}">
               <img src="../assets/img/index-product.png" alt="产品-title">
             </div>
+            <div style="
+                position: absolute;
+                top: 120px;
+                left: 0;
+                width: 100%;
+                background: rgba(220, 220, 220, .7);
+              "
+              :style="{height: productHei + 'px'}"></div>
             <div :class="$style['pro-banner']">
               <img src="../assets/img/index-project1.png" alt="产品banner">
             </div>
@@ -67,8 +75,8 @@
             </div>
             <div :class="$style.professContent" style="opacity: 1;">
                 <div :class="$style.professImg" class="container" :style="{top: professBot + 'px'}">
-                  <div :class="$style.img"><img src="../assets/img/profess-1.png" alt="专业贴牌"></div>
-                  <div :class="$style.img"><img src="../assets/img/profess-2.png" alt="专业贴牌"></div>
+                  <div :class="$style.img"><img src="../assets/img/profess-1.jpg" alt="专业贴牌"></div>
+                  <div :class="$style.img"><img src="../assets/img/profess-2.jpg" alt="专业贴牌"></div>
                 </div>
             </div>
           </div>
@@ -111,18 +119,9 @@
             <div :class="$style.title" class="container" :style="{top: qualiTop + 'px'}">
               <img src="../assets/img/quali.png" alt="资质荣誉-title">
             </div>
-            <ul class="container" :class="$style.qualiImg" :style="{top: qualiBot + 'px'}">
-              <li>
-                  <img src="../assets/img/quali-1.png" alt="资质荣誉">
-                  <img src="../assets/img/quali-2.png" alt="资质荣誉">
-              </li>
-              <li>
-                <img src="../assets/img/quali-3.png" alt="资质荣誉">
-              </li>
-              <li>
-                <img src="../assets/img/quali-4.png" alt="资质荣誉">
-              </li>
-            </ul>
+            <div class="container" :class="$style.qualiImg" :style="{top: qualiBot + 'px'}">
+              <img src="../assets/img/quali-1.jpg" alt="资质荣誉">
+            </div>
           </div>
           <!-- 合作伙伴 -->
           <div :class="$style.part" class="container">
@@ -130,7 +129,7 @@
               <img src="../assets/img/partners.png" alt="合作伙伴-title">
             </div>
             <div class="container" :class="$style.partImg" :style="{top: partBot + 'px'}">
-              <img src="../assets/img/index-part.png" alt="合作伙伴">
+              <img src="../assets/img/index-part.jpg" alt="合作伙伴">
             </div>
           </div>
         </div>
@@ -175,7 +174,8 @@ export default {
       qualiTop: 0,
       qualiBot: 120,
       partTop: 0,
-      partBot: 120
+      partBot: 120,
+      productHei: 0
     }
   },
   mounted() {
@@ -204,7 +204,7 @@ export default {
           this.aboutTop = - (600 - scrollTop) / 4
           this.aboutbot = (250 + scrollTop) / 5
           if (scrollTop >= 700) {
-            this.aboutTop = 25
+            this.aboutTop = 0
           }
           // 关于我们内容
           if (scrollTop >= 900) {
@@ -213,8 +213,10 @@ export default {
         } else if (scrollTop >= 1100 && scrollTop <= 1900) {
           this.productTop = (scrollTop - 1100) / 2
           this.productBot = (scrollTop - 700) / 2
+          this.productHei = (scrollTop - 1100) / 2
           if (scrollTop >= 1400) {
             this.productTop = 150
+            this.productHei = 160
           }
           if (scrollTop >= 1900){
               this.productBot = 600
@@ -285,13 +287,13 @@ export default {
     },
     initProduct() {
       // 初始化产品中心
-      this.$dataPost('/api/cms/achieve/list', {
+      this.$dataPost('/api/cms/achieve/type', {
         "typeId":"",
         "pageSize":"8",
         "pageNumber":"1"
       }, (res) => {
         if (res.code === 0) {
-          let list = res.data.list
+          let list = res.data
           list.forEach(function(item) {
             item.active = false
           });
@@ -399,11 +401,12 @@ export default {
 
   .about {
     margin-top: 100px;
+    height: 400px;
     position: relative;
 
     > img {
       width: 100%;
-      min-height: 440px;
+      min-height: 380px;
       display: block;
     }
 
@@ -472,7 +475,7 @@ export default {
         line-height: 1.8em;
         display: -webkit-box;
         -webkit-box-orient: vertical;
-        -webkit-line-clamp: 8;
+        -webkit-line-clamp: 6;
         overflow: hidden;
       }
 
@@ -495,7 +498,8 @@ export default {
     }
     
     .pro-banner img {
-        width: 100%;
+      width: 100%;
+      height: 100%;
     }
 
     .pro-details {
@@ -569,10 +573,9 @@ export default {
     padding: 120px 0 80px;
     
     .professContent {
-        height: 400px;
-        background: url(../assets/img/project.png) no-repeat;
-        background-size: cover;
-        padding: 80px;
+      height: 550px;
+      background: #eee;
+      background-size: cover;
     }
       
     .professImg {
@@ -591,7 +594,7 @@ export default {
         img {
           width: 100%;
           height: 100%;
-          object-fit: cover;
+          object-fit: contain;
         }
               
         &:last-child {
@@ -709,6 +712,7 @@ export default {
     position: absolute;
     top: 0;
     left: 50%;
+    z-index: 99;
     transform: translateX(-50%);
     transition: top .5s;
     
@@ -733,19 +737,8 @@ export default {
       transition: top .5s;
       padding: 0;
         
-      li {
-        float: left;
-        width: 31%;
-        margin-right: 3.5%;
-        list-style: none;
-      
-        img {
-          width: 100%;
-        }
-      
-        &:first-child img:first-child {
-          margin-bottom: 10px;
-        }
+      img {
+        width: 100%;
       }
     }
     
@@ -757,7 +750,7 @@ export default {
   .part {
     position: relative;
     padding-top: 120px;
-    height: 500px;
+    height: 400px;
     margin-bottom: 100px;
     
     .partImg {

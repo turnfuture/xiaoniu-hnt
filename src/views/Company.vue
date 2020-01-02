@@ -29,7 +29,7 @@ export default {
   name: 'Company',
   data() {
     return {
-      banner: require('../assets/img/about.png'),
+      banner: require('../assets/img/about.jpg'),
       asides: [{
         title: '',
         content: ''
@@ -72,6 +72,9 @@ export default {
         color: #D2393D;
         text-align: center;
         margin: 35px 0;
+      }
+      .main-text p {
+        line-height: 1.8em;
       }
     }
   }

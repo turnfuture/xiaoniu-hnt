@@ -55,7 +55,7 @@ export default {
   name: 'Product',
   data() {
     return {
-      banner: require('../assets/img/product.png'),
+      banner: require('../assets/img/product.jpg'),
       asides: [{
         title: '',
         content: ''

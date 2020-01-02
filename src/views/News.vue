@@ -68,7 +68,7 @@ export default {
   },
   data() {
     return {
-      banner: require('../assets/img/news.png'),
+      banner: require('../assets/img/news.jpg'),
       asides: [{
         title: '',
         content: ''

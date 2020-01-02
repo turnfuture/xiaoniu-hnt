@@ -56,7 +56,7 @@ export default {
     },
     banner() {
       // banner图片
-      return require(`../assets/img/${this.type}.png`)
+      return require(`../assets/img/${this.type}.jpg`)
     },
   },
   data() {

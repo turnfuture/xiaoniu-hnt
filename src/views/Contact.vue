@@ -60,7 +60,7 @@ export default {
   name: 'contact',
   data() {
     return {
-      banner: require('../assets/img/contact.png'),
+      banner: require('../assets/img/contact.jpg'),
       asides: [{
         title: '联系我们',
       }, {
